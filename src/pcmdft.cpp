@@ -35,14 +35,14 @@ namespace PCMDFT
         spWindow_->fcPlotL->setAutoDelete (true);
         spWindow_->fcPlotR->setAutoDelete (true);
 
-        spLCurve.reset (new QwtPlotCurve ("L"));
-        spRCurve.reset (new QwtPlotCurve ("R"));
-        spLFcCurve.reset (new QwtPlotCurve ("Lfc"));
-        spRFcCurve.reset (new QwtPlotCurve ("Rfc"));
-        spLCurve->attach (spWindow_->tsPlotL);
-        spRCurve->attach (spWindow_->tsPlotR);
-        spLFcCurve->attach (spWindow_->fcPlotL);
-        spRFcCurve->attach (spWindow_->fcPlotR);
+        spLCurve_.reset (new QwtPlotCurve ("L"));
+        spRCurve_.reset (new QwtPlotCurve ("R"));
+        spLFcCurve_.reset (new QwtPlotCurve ("Lfc"));
+        spRFcCurve_.reset (new QwtPlotCurve ("Rfc"));
+        spLCurve_->attach (spWindow_->tsPlotL);
+        spRCurve_->attach (spWindow_->tsPlotR);
+        spLFcCurve_->attach (spWindow_->fcPlotL);
+        spRFcCurve_->attach (spWindow_->fcPlotR);
 
         spWindow_->comboPlatforms->insertItems (0, DFTThread::getPlatformList());
 
@@ -170,10 +170,10 @@ namespace PCMDFT
         QwtPointSeriesData* rSeries = new QwtPointSeriesData {rTs};
         QwtPointSeriesData* lFcSeries = new QwtPointSeriesData {lFc};
         QwtPointSeriesData* rFcSeries = new QwtPointSeriesData {rFc};
-        spLCurve->setData (lSeries);
-        spRCurve->setData (rSeries);
-        spLFcCurve->setData (lFcSeries);
-        spRFcCurve->setData (rFcSeries);
+        spLCurve_->setData (lSeries);
+        spRCurve_->setData (rSeries);
+        spLFcCurve_->setData (lFcSeries);
+        spRFcCurve_->setData (rFcSeries);
     }
 
 }

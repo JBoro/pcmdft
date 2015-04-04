@@ -44,7 +44,7 @@ namespace PCMDFT
 #include "pcmthread.moc"
 
     PCMThread::PCMThread (std::shared_ptr<const PCMSettings> spSettings) :
-        QThread (), spSettings_ {spSettings}, quit_ {false}
+        QThread {}, spSettings_ {spSettings}, quit_ {false}
     {}
 
     PCMThread::~PCMThread () = default;

@@ -53,7 +53,7 @@ namespace PCMDFT
         std::unique_ptr<QTimer> spTimer_;
         std::unique_ptr<Ui::MainWindow> spWindow_;
         std::shared_ptr<PCMSettings> spSettings_;
-        std::unique_ptr<QwtPlotCurve> spLCurve, spRCurve, spLFcCurve, spRFcCurve;
+        std::unique_ptr<QwtPlotCurve> spLCurve_, spRCurve_, spLFcCurve_, spRFcCurve_;
     };
 
 }
