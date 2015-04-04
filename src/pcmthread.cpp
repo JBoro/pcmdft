@@ -104,7 +104,8 @@ namespace PCMDFT
         if (buffersize_return != static_cast<snd_pcm_uframes_t> (spSettings_->periodSize_ * spSettings_->periods_))
         {
             DebugHelper dbgHelper;
-            dbgHelper << "Period size " << spSettings_->periodSize_ << " not available, using " << buffersize_return / spSettings_->periods_;
+            dbgHelper << "Period size " << spSettings_->periodSize_ << " not available, using " << 
+                            buffersize_return / spSettings_->periods_;
             emit sigDebug (dbgHelper.string());
             periodSize_ = buffersize_return / spSettings_->periods_;
         }
