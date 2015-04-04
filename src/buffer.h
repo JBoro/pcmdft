@@ -58,7 +58,7 @@ namespace PCMDFT
     class TSBuffer : public Buffer
     {
     public:
-        TSBuffer (std::shared_ptr<const PCMSettings> spSettings, const QByteArray& bytes)
+        TSBuffer (std::shared_ptr<const PCMSettings> spSettings, const QByteArray& bytes) : Buffer{}
         {
             data_.resize (spSettings->channels_);
 
@@ -72,7 +72,8 @@ namespace PCMDFT
                 for (int j = 0, k = 0; j < spSettings->frameSize_; j += spSettings->sampleSize_, ++k)
                 {
                     SampleType s;
-                    std::copy (bytes.data() + i + j, bytes.data() + i + j + sizeof (SampleType), reinterpret_cast<char*> (&s));
+                    std::copy (bytes.data() + i + j, bytes.data() + i + j + sizeof (SampleType), 
+                                    reinterpret_cast<char*> (&s));
                     data_[k].push_back (s);
                 }
             }
@@ -94,7 +95,7 @@ namespace PCMDFT
         };
 
     public:
-        FreqBuffer (std::shared_ptr<const PCMSettings> spSettings, const QByteArray& bytes)
+        FreqBuffer (std::shared_ptr<const PCMSettings> spSettings, const QByteArray& bytes) : Buffer{}
         {
             data_.resize (spSettings->channels_);
             int chnlSz = bytes.length () / spSettings->channels_;
@@ -108,7 +109,8 @@ namespace PCMDFT
                 for (int j = beg; j < end; j += sizeof (CpxNum))
                 {
                     CpxNum fc;
-                    std::copy (bytes.data() + j, bytes.data() + j + sizeof (fc), reinterpret_cast<char*> (&fc));
+                    std::copy (bytes.data() + j, bytes.data() + j + sizeof (fc), 
+                                    reinterpret_cast<char*> (&fc));
                     data_[i].push_back (fc());
                 }
             }
