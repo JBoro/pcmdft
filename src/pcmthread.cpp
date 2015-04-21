@@ -35,6 +35,10 @@ namespace PCMDFT
         {
             return pcm_handle_;
         }
+        
+        //Prevent copying
+        PCMHandle (const PCMHandle&) = delete;
+        PCMHandle& operator=(const PCMHandle&) = delete;
 
     signals:
         void sigDebug (QString value);
