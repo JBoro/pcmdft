@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} ${ALSA_INCLUDE_DIRS})
 
-find_library(QWT_LIBRARY qwt)
+find_library(QWT_LIBRARY qwt6)
 
 set(pcmdft_SRCS pcmdft.cpp main.cpp pcmthread.cpp pcmdftwindow.ui)
 add_executable(pcmdft dftthread.cpp ${pcmdft_SRCS})
