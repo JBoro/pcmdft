@@ -1,4 +1,5 @@
 project(pcmdft)
+include(CMakePrintHelpers)
 cmake_minimum_required(VERSION 3.0)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Core REQUIRED)
@@ -15,6 +16,9 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} ${ALSA_INCLUDE_DIRS})
 
 find_library(QWT_LIBRARY qwt6)
+find_path(QWT_INCLUDES qwt_plot_curve.h PATH_SUFFIXES qwt6)
+cmake_print_variables(QWT_INCLUDES)
+include_directories("${QWT_INCLUDES}")
 
 set(pcmdft_SRCS pcmdft.cpp main.cpp pcmthread.cpp pcmdftwindow.ui)
 add_executable(pcmdft dftthread.cpp ${pcmdft_SRCS})
