@@ -15,7 +15,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} ${ALSA_INCLUDE_DIRS})
 
-find_library(QWT_LIBRARY qwt6)
+find_library(QWT_LIBRARY qwt6-qt5)
 find_path(QWT_INCLUDES qwt_plot_curve.h PATH_SUFFIXES qwt6)
 cmake_print_variables(QWT_INCLUDES)
 include_directories("${QWT_INCLUDES}")
