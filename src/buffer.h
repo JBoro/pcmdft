@@ -40,7 +40,7 @@ namespace PCMDFT
 
         std::size_t size (std::size_t chnl) const
         {
-            data_[chnl].size();
+            return data_[chnl].size();
         }
 
 
