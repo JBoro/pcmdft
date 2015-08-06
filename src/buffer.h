@@ -23,7 +23,7 @@ namespace PCMDFT
 
         const SampleType& at (std::size_t chnl, std::size_t i) const
         {
-            return at (chnl, i);
+            return const_cast<Buffer&> (*this).at (chnl, i);
         }
 
         std::size_t size() const
