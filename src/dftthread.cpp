@@ -5,6 +5,7 @@
 #include <cmath>
 #define __CL_ENABLE_EXCEPTIONS
 #include <CL/cl.hpp>
+#include <boost/filesystem.hpp>
 
 #include "buffer.h"
 
@@ -62,7 +63,9 @@ QStringList DFTThread::getDeviceList (std::size_t platformId)
 
 void DFTThread::init()
 {
-    std::ifstream programFile {spSettings_->clProgramName_};
+    boost::filesystem::path clProgramName {boost::filesystem::read_symlink("/proc/self/exe").remove_filename()};
+    clProgramName /= spSettings_->clProgramName_;
+    std::ifstream programFile {clProgramName.generic_string()};
     std::string programString {std::istreambuf_iterator<char> (programFile),
                                (std::istreambuf_iterator<char>())
                               };
