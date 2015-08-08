@@ -26,12 +26,12 @@ namespace PCMDFT
     pcmdft::pcmdft() : spWindow_ {new Ui::MainWindow}, spSettings_ {new PCMSettings}
     {
         spWindow_->setupUi (this);
-        spWindow_->tsPlotL->setAutoReplot (true);
-        spWindow_->tsPlotR->setAutoReplot (true);
+        spWindow_->tsPlotL->setAutoReplot ();
+        spWindow_->tsPlotR->setAutoReplot ();
         spWindow_->tsPlotL->setAutoDelete (true);
         spWindow_->tsPlotR->setAutoDelete (true);
-        spWindow_->fcPlotL->setAutoReplot (true);
-        spWindow_->fcPlotR->setAutoReplot (true);
+        spWindow_->fcPlotL->setAutoReplot ();
+        spWindow_->fcPlotR->setAutoReplot ();
         spWindow_->fcPlotL->setAutoDelete (true);
         spWindow_->fcPlotR->setAutoDelete (true);
 
@@ -94,6 +94,7 @@ namespace PCMDFT
 
     void pcmdft::slotStopClicked ()
     {
+        spWindow_->btnStart->setEnabled (true);
         stopThreads();
     }
 
@@ -125,7 +126,9 @@ namespace PCMDFT
             (const std::exception& e)
         {
             slotError (QString {"Error starting pcmdft: "} + e.what());
+            return;
         }
+        spWindow_->btnStart->setEnabled (false);
     }
 
     void pcmdft::slotError (QString value)
